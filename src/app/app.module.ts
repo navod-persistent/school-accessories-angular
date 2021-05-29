@@ -8,18 +8,22 @@ import { ShoppingModule } from './shopping/shopping.module';
 import { EditProductFormComponent } from './admin/components/edit-product-form/edit-product-form.component';
 import { AddProductFormComponent } from './admin/components/add-product-form/add-product-form.component';
 import { ProductsComponent } from './shopping/products/products.component';
+import { FormsModule } from '@angular/forms';
+import { BsNavbarComponentComponent } from './core/components/bs-navbar-component/bs-navbar-component.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     EditProductFormComponent,
     AddProductFormComponent,
+    BsNavbarComponentComponent,
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
     AppRoutingModule,
     ShoppingModule,
+    FormsModule,
     RouterModule.forRoot([
       { path: '', component: ProductsComponent },
       // { path: 'login', component: LoginComponent },

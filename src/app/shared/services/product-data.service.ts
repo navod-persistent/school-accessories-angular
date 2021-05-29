@@ -108,7 +108,13 @@ export class ProductDataService {
     }
   }
 
-  delete(pid: string) {}
+  delete(pid: string) {
+    for (var i = 0; i < this.productList.length; i++) {
+      if (this.productList[i].$key === pid) {
+        this.productList.splice(i, 1);
+      }
+    }
+  }
 
   get(pid: string) {
     for (var i = 0; i < this.productList.length; i++) {
