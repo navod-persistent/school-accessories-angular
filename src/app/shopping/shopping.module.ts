@@ -11,29 +11,30 @@ import { ShoppingFormComponent } from './shopping-form/shopping-form.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgSelectModule } from '@ng-select/ng-select';
 import { CartCheckoutComponent } from './cart-checkout/cart-checkout.component';
+import { CoreModule } from '../core/core.module';
 
 
 @NgModule({
   declarations: [
     ShoppingCartComponent,
     ShoppingFormComponent,
-    CartCheckoutComponent
+    CartCheckoutComponent,
+    ProductsComponent
   ],
   imports: [
+    RouterModule.forChild([
+      { path: 'shopping-cart', component: ShoppingCartComponent },
+    ]),
+    NgSelectModule,
+    FormsModule,
+    ReactiveFormsModule,
+    CoreModule,
     AdminModule,
     CommonModule,
     SharedModule,
-    RouterModule.forChild([
-      { path: 'shopping-cart', component: ShoppingCartComponent },
-    NgSelectModule,
-    FormsModule,
-    ReactiveFormsModule
-    ]),
   ],
   providers:[
-    ShoppingCartService,
-    ProductQuantityComponent,
-    ShoppingFormComponent
+    ShoppingCartService
   ]
 })
 export class ShoppingModule {}

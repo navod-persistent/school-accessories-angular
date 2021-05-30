@@ -9,8 +9,10 @@ import { Product } from '../../models/product';
   styleUrls: ['./product-card.component.css'],
 })
 export class ProductCardComponent implements OnInit {
-  @Input('product') product: Product;
-  isAdmin: Boolean = true;
+  @Input()
+  product: Product;
+
+  isAdmin: boolean = true;
 
   constructor(
     private router: Router,
