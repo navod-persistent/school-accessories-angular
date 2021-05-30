@@ -8,18 +8,21 @@ import {ProductQuantityComponent} from "../shared/product-quantity/product-quant
 import { ShoppingFormComponent } from './shopping-form/shopping-form.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgSelectModule } from '@ng-select/ng-select';
+import { CartCheckoutComponent } from './cart-checkout/cart-checkout.component';
 
 
 @NgModule({
   declarations: [
     ShoppingCartComponent,
-    ShoppingFormComponent
+    ShoppingFormComponent,
+    CartCheckoutComponent
   ],
   imports: [
     CommonModule,
     SharedModule,
     RouterModule.forChild([
       { path: 'shopping-cart', component: ShoppingCartComponent },
+      
 
     ]),
     NgSelectModule,
