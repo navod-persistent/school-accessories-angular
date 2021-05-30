@@ -1,14 +1,14 @@
-<div class="row no-gutters">
+<div class="row no-gutters" >
   <div class="col-3">
-    <button
+    <button style="color:lightpink"
       (click)="removeFromCart()"
-      class="btn btn-secondary btn-block">-</button>
+      class="btn btn-secondary btn-block" >-</button>
   </div>
   <div class="col text-center quantity">
-    {{ shoppingCart.getQuantity(product) }} in cart
+     {{ shoppingCart.getQuantity(product) }} in cart
   </div>
   <div class="col-4">
-    <button
+    <button style="color:greenyellow"
       (click)="addToCart()"
       class="btn btn-secondary btn-block">+</button>
   </div>
