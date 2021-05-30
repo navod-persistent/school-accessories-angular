@@ -5,14 +5,15 @@ import {RouterModule} from "@angular/router";
 import {SharedModule} from "../shared/shared.module";
 import {ShoppingCartService} from "../shared/services/shopping-cart.service";
 import {ProductQuantityComponent} from "../shared/product-quantity/product-quantity.component";
-
+import { ShoppingFormComponent } from './shopping-form/shopping-form.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { NgSelectModule } from '@ng-select/ng-select';
 
 
 @NgModule({
   declarations: [
-
-
-    ShoppingCartComponent
+    ShoppingCartComponent,
+    ShoppingFormComponent
   ],
   imports: [
     CommonModule,
@@ -20,11 +21,15 @@ import {ProductQuantityComponent} from "../shared/product-quantity/product-quant
     RouterModule.forChild([
       { path: 'shopping-cart', component: ShoppingCartComponent },
 
-    ])
+    ]),
+    NgSelectModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers:[
     ShoppingCartService,
-    ProductQuantityComponent
+    ProductQuantityComponent,
+    ShoppingFormComponent
   ]
 })
 export class ShoppingModule { }

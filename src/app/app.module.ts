@@ -4,6 +4,9 @@ import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import {ShoppingModule} from "./shopping/shopping.module";
+import { NgSelectModule } from '@ng-select/ng-select';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+
 
 @NgModule({
   declarations: [
@@ -13,7 +16,11 @@ import {ShoppingModule} from "./shopping/shopping.module";
     BrowserModule,
     HttpClientModule,
     AppRoutingModule,
-    ShoppingModule
+    ShoppingModule,
+    NgSelectModule,
+    FormsModule,
+    ReactiveFormsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

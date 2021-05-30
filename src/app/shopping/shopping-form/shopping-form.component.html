@@ -1,0 +1,97 @@
+<div class="container">
+  <div class="page-header">
+    
+ 
+  </div>
+  <div class="row">
+    <div class="col-md-6 grid-margin stretch-card">
+      <div class="card">
+        <div class="card-body">
+          <h4 class="card-title">Purchase Items</h4>
+          <p class="card-description">
+            Delivery Details
+          </p>
+          <form class="forms-sample" [formGroup] = "shoppingForm">
+            <div class="form-group">
+              <label for="exampleInputUsername1">Name</label>
+              <input type="text" class="form-control" id="username" placeholder="Username" name="username" formControlName="userName" required>
+            </div>
+            <div class="form-group">
+              <label for="exampleInputEmail1">Email address</label>
+              <input type="email" class="form-control" id="email" placeholder="Email" formControlName="email">
+            </div>
+            <div class="form-group">
+              <label for="exampleInputPassword1">Mobile No</label>
+              <input type="text" class="form-control" id="mobileno" placeholder="Mobile No (0714568952)" formControlName="mobileNo">
+            </div>
+            <div class="form-group">
+              <label for="exampleInputConfirmPassword1">Address</label>
+              <input type="text" class="form-control" id="address" placeholder="Deliery Address" formControlName="address">
+            </div>
+            <p></p>
+
+            <p class="card-description">
+              Card Details
+            </p>
+
+            <!-- <div class="form-check form-check-flat form-check-primary">
+              <label class="form-check-label">
+                <input type="checkbox" class="form-check-input">
+                Visa
+                <i class="input-helper"></i>
+              </label>
+            </div>
+            <div class="form-check form-check-flat form-check-primary">
+              <label class="form-check-label">
+                <input type="checkbox" class="form-check-input">
+                Master
+                <i class="input-helper"></i>
+              </label>
+            </div> -->
+
+            <div class="form-check form-check-flat form-check-primary" *ngFor="let chk of checkboxes">
+              <label class="form-check-label">
+                <input type="checkbox" class="form-check-input" [disabled]="chk.checked" (click)="disableOther(chk)"> {{chk.value}}
+            </label>
+            </div>
+            
+            <div class="form-group">
+              <label for="exampleInputUsername1">Card No</label>
+              <input type="text" class="form-control" id="cardno" placeholder="Card No (16 digits)" formControlName="cardNo">
+            </div>
+
+            <div class="form-group">
+              <label for="exampleInputUsername1">CVC</label>
+              <input type="text" class="form-control" id="cvc" placeholder="CVC (3 digits)" formControlName="cvc">
+            </div>
+
+            <div class="form-group">
+              <label for="exampleInputUsername1">Expiration Month</label>
+              <ng-select [items]="cars" 
+                bindLabel="name" 
+                bindValue="id"
+                formControlName="monthExpire">
+              </ng-select>
+            </div>
+            <div class="form-group">
+              <label for="exampleInputUsername1">Expiration Year</label>
+              <ng-select [items]="cars" 
+                bindLabel="name" 
+                bindValue="id" >
+              </ng-select>
+            </div>
+            <p></p>
+            <div class="form-group">
+            <button type="submit" class="btn btn-primary col-md-2" (click) = "purchaseCart()">Submit</button>
+           
+            <button class="btn btn-light col-md-2">Cancel</button>
+          </div>
+          </form>
+        </div>
+      </div>
+    </div>
+    </div>
+  </div>
+  <div class="container">
+    <p></p>
+  </div>
