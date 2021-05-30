@@ -1,10 +1,6 @@
-<h3 style="color:#0b5ed7">Shopping Cart</h3>
-<div *ngIf="cart$.items.length==0" style="text-align: center"><br><br>
-  <h4 >Your Shopping Cart is empty</h4><br>
-  <a class=" btn btn-primary " href="/home" style="color:white ">explore products</a>
-</div>
-<div *ngIf="cart$.items.length" class="card"  style="width: 80%;">
-  <div  class="card-body">
+<h1 style="color:#0b5ed7">Checkout Shopping Cart</h1>
+<div class="card"  style="width: 80%;">
+  <div class="card-body">
     <p>
       You have {{ cart$.totalItemsCount }} items in your shopping cart.
       <button *ngIf="cart$.items.length" (click)="clearCart()" class="float-right btn btn-light btn-sm">Clear Shopping Cart</button>
@@ -15,7 +11,7 @@
     <thead>
     <tr>
       <th></th>
-      <th style="text-align: left">Product</th>
+      <th>Product</th>
       <th class="text-center" style="width: 230px">Quantity</th>
       <th class="text-right" style="width: 200px">Price</th>
     </tr>
@@ -34,13 +30,15 @@
       </td>
       <td>
         <br>
-        <app-product-quantity [product]="item" [shopping-cart]="cart$">
-        </app-product-quantity>
+        <div class="col text-center quantity">
+            {{ cart$.getQuantity(item) }} in cart
+          </div>
+        
       </td>
       <td class="text-right">
         <br>
         {{ item.totalPrice | currency:'Rs.':true }}
-
+      </td>
     </tr>
     </tbody>
     <tfoot>
@@ -52,7 +50,7 @@
     </tr>
     <tr>
       <th colspan="4">
-        <a *ngIf="cart$.items.length" routerLink="/check-out" class="btn btn-primary">Check Out</a>
+        <a *ngIf="cart$.items.length" routerLink="/check-out" class="btn btn-primary">Purchase</a>
       </th>
     </tr>
     </tfoot>
