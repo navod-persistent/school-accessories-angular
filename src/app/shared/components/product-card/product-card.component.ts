@@ -2,6 +2,7 @@ import { ProductDataService } from './../../services/product-data.service';
 import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Product } from '../../models/product';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-product-card',
@@ -16,18 +17,33 @@ export class ProductCardComponent implements OnInit {
 
   constructor(
     private router: Router,
-    private prodcutDataService: ProductDataService
+    private prodcutDataService: ProductDataService // private authService: AuthService
   ) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    // isAdmin = authService.
+  }
 
   delete(pid: string) {
-    if (!confirm('Are you sure you want to delete this product?')) return;
-    this.prodcutDataService.delete(pid);
+    Swal.fire({
+      title: 'Are you sure you want to delete the product?',
+      showCancelButton: true,
+      confirmButtonText: 'yes',
+      cancelButtonText: 'Cancel',
+    }).then((result) => {
+      if (result.value) {
+        this.prodcutDataService.delete(pid);
+        Swal.fire('Product Deletion Successfully!', 'success');
+        this.router.navigate(['products']);
+      } else if (result.dismiss === Swal.DismissReason.cancel) {
+        Swal.fire('Cancelled', 'The Product Deletion was Cancelled', 'error');
+        this.router.navigate(['products']);
+      }
+    });
   }
 
   editproduct(pid: string) {
-    this.router.navigate(['edit-product/' + pid]);
+    this.router.navigate(['admin/edit-product/' + pid]);
   }
 
   addToCart(pid: string) {

@@ -1,53 +1,50 @@
 <div class="container">
     <br>
     <form class="form-horizontal shadow p-3 mb-5 bg-white rounded" #f="ngForm" (ngSubmit)="f.form.valid && save()">
-    <h4>Edit Product</h4>
-    <div class="row">
-    <div class="col-6">
-    <div class="form-group">
-    <label for="category">Product Title :</label>
-    <input #name="ngModel" type="text" class="form-control" placeholder="Product Title" ngModel name="name" [(ngModel)]="product.title" required>
-    <div class="alert alert-danger" *ngIf="name.touched && name.invalid">
-    Title is required.
-    </div>
-    </div>
-    <div class="form-group">
-    <label for="category">Category :</label>
-    <select #category="ngModel" [(ngModel)]="product.category" name="category" id="category" class="form-control" required>
-    <option value=""></option>
-    <option *ngFor="let c of categories$">
-    {{ c }}
-    </option>
-    </select>
-    </div>
-    
-     
-    
-    <div class="form-group">
-    <label for="category">Price :</label>
-    <input type="text" class="form-control" placeholder="price" name="price" #price ngModel [(ngModel)]="product.price" required>
-    </div>
-    <div class="form-group">
-    <label for="category">Product Image :</label>
-    <input type="file" class="form-control" placeholder="Product Picture" #image accept="image/*" name="image" (change)="handleFileInput($event)">
-    </div>
-    </div>
-    <div class="col-3">
-    <p><b>Original Image :</b></p>
-    <img [src]="product.imageUrl" style="width:70%;height: 60%;">
-    
-     
-    
-    </div>
-    <div class="col-3">
-    <p><b>New Image :</b></p>
-    <img [src]="imageUrl" style="width:250px;height: 200px;">
-    </div>
-    </div>
-    <div class="row">
-    <div class="col-6">
-    <input type="submit" class=" btn btn-secondary" value="Update Product">
-    </div>
-    </div>
+        <h4>Edit Product</h4>
+        <div class="row">
+            <div class="col-6">
+                <div class="form-group">
+                    <label for="category">Product Title :</label>
+                    <input #name="ngModel" type="text" class="form-control" placeholder="Product Title" ngModel name="name" [(ngModel)]="product.title" required>
+                    <div class="alert alert-danger" *ngIf="name.touched && name.invalid">
+                        Title is required.
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="category">Category :</label>
+                    <select #category="ngModel" [(ngModel)]="product.category" name="category" id="category" class="form-control" required>
+                        <option value=""></option>
+                        <option *ngFor="let c of categories$">
+                            {{ c }}
+                        </option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="category">Price :</label>
+                    <input type="text" class="form-control" placeholder="price" name="price" #price ngModel [(ngModel)]="product.price" required>
+                </div>
+                <div class="form-group">
+                    <label for="category">Product Image :</label>
+                    <input type="file" class="form-control" placeholder="Product Picture" #image accept="image/*" name="image" (change)="handleFileInput($event)">
+                </div>
+            </div>
+            <div class="col-3">
+                <p><b>Original Image :</b></p>
+                <img [src]="product.imageUrl" style="width:70%;height: 60%;">
+
+            </div>
+            <div class="col-3">
+                <p><b>New Image :</b></p>
+                <img [src]="imageUrl" style="width:250px;height: 200px;">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-6">
+                <input type="submit" class=" btn btn-secondary" value="Update Product">
+            </div>
+        </div>
+
     </form>
-    </div>
+</div>
