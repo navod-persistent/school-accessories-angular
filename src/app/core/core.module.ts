@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { LoginComponent } from './components/login/login.component';
+import { RouterModule } from '@angular/router';
 
 
 
@@ -11,10 +12,12 @@ import { LoginComponent } from './components/login/login.component';
     LoginComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    RouterModule.forChild([])
   ],
   exports: [
-    NavbarComponent
+    NavbarComponent,
+    LoginComponent
   ]
 })
 export class CoreModule { }

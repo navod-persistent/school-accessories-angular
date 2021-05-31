@@ -11,6 +11,7 @@ import { ProductsComponent } from './shopping/products/products.component';
 import { NgSelectModule } from '@ng-select/ng-select';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CoreModule } from './core/core.module';
+import { LoginComponent } from './core/components/login/login.component';
 
 @NgModule({
   declarations: [
@@ -25,8 +26,8 @@ import { CoreModule } from './core/core.module';
     ShoppingModule,
     FormsModule,
     RouterModule.forRoot([
-      { path: '', component: ProductsComponent },
-      // { path: 'login', component: LoginComponent },
+      { path: '', component: LoginComponent },
+      { path: 'products', component: ProductsComponent },
     ]),
     NgSelectModule,
     FormsModule,

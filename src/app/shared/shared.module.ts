@@ -12,9 +12,7 @@ import { FormsModule } from '@angular/forms';
   imports: [
     CommonModule,
     FormsModule,
-    RouterModule.forRoot([
-      { path: 'edit-product/:id', component: EditProductFormComponent },
-    ]),
+    RouterModule.forChild([])
   ],
   exports: [ProductQuantityComponent, ProductCardComponent],
   providers: [ShoppingCartService],
