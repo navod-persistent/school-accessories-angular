@@ -1,3 +1,4 @@
+import { Product } from './../shared/models/product';
 import { AdminModule } from './../admin/admin.module';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
@@ -5,26 +6,25 @@ import { ShoppingCartComponent } from './shopping-cart/shopping-cart.component';
 import { RouterModule } from '@angular/router';
 import { SharedModule } from '../shared/shared.module';
 import { ShoppingCartService } from '../shared/services/shopping-cart.service';
-import { ProductQuantityComponent } from '../shared/product-quantity/product-quantity.component';
 import { ProductsComponent } from './products/products.component';
 import { ShoppingFormComponent } from './shopping-form/shopping-form.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgSelectModule } from '@ng-select/ng-select';
 import { CartCheckoutComponent } from './cart-checkout/cart-checkout.component';
+import { ProductFilterComponent } from './products/product-filter/product-filter.component';
 import { CoreModule } from '../core/core.module';
-
+import { ProductQuantityComponent } from '../shared/product-quantity/product-quantity.component';
 
 @NgModule({
   declarations: [
     ShoppingCartComponent,
     ShoppingFormComponent,
     CartCheckoutComponent,
-    ProductsComponent
+    ProductsComponent,
+    ProductFilterComponent,
   ],
   imports: [
-    RouterModule.forChild([
-      { path: 'shopping-cart', component: ShoppingCartComponent },
-    ]),
+    RouterModule.forChild([]),
     NgSelectModule,
     FormsModule,
     ReactiveFormsModule,
@@ -32,9 +32,18 @@ import { CoreModule } from '../core/core.module';
     AdminModule,
     CommonModule,
     SharedModule,
+    RouterModule.forChild([
+             { path: 'shopping-cart', component: ShoppingCartComponent },
+       ]),
   ],
-  providers:[
-    ShoppingCartService
-  ]
+  exports: [
+    ProductsComponent,
+    ShoppingCartComponent,
+    CartCheckoutComponent,
+    ShoppingFormComponent,
+  ],
+  providers: [ShoppingCartService,
+         ProductQuantityComponent,
+        ShoppingFormComponent,],
 })
 export class ShoppingModule {}

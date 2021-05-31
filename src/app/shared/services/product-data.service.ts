@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
 import { Product } from '../models/product';
 
 @Injectable({
@@ -7,6 +8,7 @@ import { Product } from '../models/product';
 })
 export class ProductDataService {
   productList: Array<Product>;
+
   constructor(private http: HttpClient) {
     this.productList = new Array<Product>();
     let p1: Product = {
@@ -47,7 +49,7 @@ export class ProductDataService {
     let p6: Product = {
       $key: '6',
       title: 'Sticky Notes Pad',
-      category: 'Sticky Notes',
+      category: 'Sticky notes',
       price: 200,
       imageUrl: 'assets/imgs/sticky note set.jpg',
     };
@@ -92,6 +94,7 @@ export class ProductDataService {
   }
 
   getAll() {
+    // return this.productList.asObservable();
     return this.productList;
   }
 
