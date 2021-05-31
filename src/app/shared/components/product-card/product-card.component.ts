@@ -29,4 +29,8 @@ export class ProductCardComponent implements OnInit {
   editproduct(pid: string) {
     this.router.navigate(['edit-product/' + pid]);
   }
+
+  addToCart(pid: string) {
+    this.router.navigate(['shopping-cart']);
+  }
 }

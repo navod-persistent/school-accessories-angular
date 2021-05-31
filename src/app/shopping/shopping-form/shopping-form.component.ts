@@ -57,6 +57,7 @@ export class ShoppingFormComponent implements OnInit {
       'cardType': new FormControl()
     })
   }
+  
   purchaseCart() {
     console.log(this.shoppingForm.value);
     Swal.fire({
