@@ -7,6 +7,10 @@ img {
     width: 60px;
     text-align: left;
 }
+.add-btn {
+    width: 100px;
+    align-self: center;
+}
 
 .card-text-price {
     color: rgb(21, 34, 73);

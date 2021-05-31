@@ -6,13 +6,13 @@ import { ShoppingCartComponent } from './shopping-cart/shopping-cart.component';
 import { RouterModule } from '@angular/router';
 import { SharedModule } from '../shared/shared.module';
 import { ShoppingCartService } from '../shared/services/shopping-cart.service';
-import { ProductQuantityComponent } from '../shared/product-quantity/product-quantity.component';
 import { ProductsComponent } from './products/products.component';
 import { ShoppingFormComponent } from './shopping-form/shopping-form.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgSelectModule } from '@ng-select/ng-select';
 import { CartCheckoutComponent } from './cart-checkout/cart-checkout.component';
 import { ProductFilterComponent } from './products/product-filter/product-filter.component';
+import { CoreModule } from '../core/core.module';
 
 @NgModule({
   declarations: [
@@ -23,20 +23,36 @@ import { ProductFilterComponent } from './products/product-filter/product-filter
     ProductFilterComponent,
   ],
   imports: [
-    AdminModule,
-    CommonModule,
-    SharedModule,
+    RouterModule.forChild([]),
     NgSelectModule,
     FormsModule,
     ReactiveFormsModule,
-    RouterModule.forChild([
-      { path: 'shopping-cart', component: ShoppingCartComponent },
-    ]),
+    CoreModule,
+    AdminModule,
+    CommonModule,
+    SharedModule,
+    // <<<<<<< HEAD
+    //     NgSelectModule,
+    //     FormsModule,
+    //     ReactiveFormsModule,
+    //     RouterModule.forChild([
+    //       { path: 'shopping-cart', component: ShoppingCartComponent },
+    //     ]),
+    //   ],
+    //   providers: [
+    //     ShoppingCartService,
+    //     ProductQuantityComponent,
+    //     ShoppingFormComponent,
+    //   ],
+    // =======
   ],
-  providers: [
-    ShoppingCartService,
-    ProductQuantityComponent,
+  exports: [
+    ProductsComponent,
+    ShoppingCartComponent,
+    CartCheckoutComponent,
     ShoppingFormComponent,
   ],
+  providers: [ShoppingCartService],
+  // >>>>>>> origin/master
 })
 export class ShoppingModule {}

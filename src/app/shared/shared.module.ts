@@ -1,22 +1,14 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ShoppingModule } from '../shopping/shopping.module';
 import { ProductQuantityComponent } from './product-quantity/product-quantity.component';
 import { ShoppingCartService } from './services/shopping-cart.service';
-import { ProductCardComponent } from './components/product-card/product-card.component';
 import { RouterModule } from '@angular/router';
-import { EditProductFormComponent } from '../admin/components/edit-product-form/edit-product-form.component';
 import { FormsModule } from '@angular/forms';
+import { ProductCardComponent } from './components/product-card/product-card.component';
 
 @NgModule({
   declarations: [ProductQuantityComponent, ProductCardComponent],
-  imports: [
-    CommonModule,
-    FormsModule,
-    RouterModule.forRoot([
-      { path: 'edit-product/:id', component: EditProductFormComponent },
-    ]),
-  ],
+  imports: [CommonModule, FormsModule, RouterModule.forChild([])],
   exports: [ProductQuantityComponent, ProductCardComponent],
   providers: [ShoppingCartService],
 })

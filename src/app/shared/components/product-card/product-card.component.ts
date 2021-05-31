@@ -10,8 +10,10 @@ import Swal from 'sweetalert2';
   styleUrls: ['./product-card.component.css'],
 })
 export class ProductCardComponent implements OnInit {
-  @Input('product') product: Product;
-  isAdmin: Boolean = true;
+  @Input()
+  product: Product;
+
+  isAdmin: boolean = true;
 
   constructor(
     private router: Router,
@@ -41,6 +43,10 @@ export class ProductCardComponent implements OnInit {
   }
 
   editproduct(pid: string) {
-    this.router.navigate(['edit-product/' + pid]);
+    this.router.navigate(['admin/edit-product/' + pid]);
+  }
+
+  addToCart(pid: string) {
+    this.router.navigate(['shopping-cart']);
   }
 }
