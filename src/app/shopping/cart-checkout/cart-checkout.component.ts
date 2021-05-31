@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {ShoppingCartService} from "../../shared/services/shopping-cart.service";
 import {ShoppingCart} from "../../shared/models/shopping-cart";
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -12,7 +13,7 @@ export class CartCheckoutComponent implements OnInit {
   cart$:ShoppingCart;
   
 
-  constructor(private shoppingCartService: ShoppingCartService) { }
+  constructor(private shoppingCartService: ShoppingCartService, private router: Router) { }
 
  
    async ngOnInit() {
@@ -21,6 +22,9 @@ export class CartCheckoutComponent implements OnInit {
   }
   clearCart(){
     this.shoppingCartService.clearCart();
+  }
+  purchaseCart() {
+    this.router.navigate(['purchase']);
   }
 
 }

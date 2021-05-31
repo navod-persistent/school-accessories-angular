@@ -1,7 +1,7 @@
 <h3 style="color:#0b5ed7">Shopping Cart</h3>
 <div *ngIf="cart$.items.length==0" style="text-align: center"><br><br>
   <h4 >Your Shopping Cart is empty</h4><br>
-  <a class=" btn btn-primary " href="/home" style="color:white ">explore products</a>
+  <a class=" btn btn-primary "  style="color:white " (click)="navigateToHome()">explore products</a>
 </div>
 <div *ngIf="cart$.items.length" class="card"  style="width: 80%;">
   <div  class="card-body">
@@ -52,7 +52,7 @@
     </tr>
     <tr>
       <th colspan="4">
-        <a *ngIf="cart$.items.length" routerLink="/check-out" class="btn btn-primary">Check Out</a>
+        <a *ngIf="cart$.items.length" routerLink="/check-out" class="btn btn-primary" (click)="checkoutCart()">Check Out</a>
       </th>
     </tr>
     </tfoot>

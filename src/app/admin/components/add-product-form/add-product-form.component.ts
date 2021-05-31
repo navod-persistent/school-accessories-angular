@@ -36,7 +36,7 @@ export class AddProductFormComponent implements OnInit {
     this.product.$key = (
       this.productDataService.getAll().length + 1
     ).toString();
-    this.product.title = product.name;
+    this.product.title = product.title;
     this.product.price = product.price;
     this.product.category = product.category;
     this.product.imageUrl = this.imageUrl;

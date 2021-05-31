@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {ShoppingCartService} from "../../shared/services/shopping-cart.service";
 import {ShoppingCart} from "../../shared/models/shopping-cart";
-
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-shopping-cart',
@@ -11,7 +11,7 @@ import {ShoppingCart} from "../../shared/models/shopping-cart";
 export class ShoppingCartComponent implements OnInit {
   cart$:ShoppingCart;
 
-  constructor(private shoppingCartService: ShoppingCartService) { }
+  constructor(private shoppingCartService: ShoppingCartService, private router: Router) { }
 
    async ngOnInit() {
     let items = await this.shoppingCartService.getCart();
@@ -19,6 +19,14 @@ export class ShoppingCartComponent implements OnInit {
   }
   clearCart(){
     this.shoppingCartService.clearCart();
+  }
+
+  checkoutCart() {
+    this.router.navigate(['cart-checkout']);
+  }
+
+  navigateToHome() {
+    this.router.navigate(['products']);
   }
 
 }
