@@ -1,3 +1,4 @@
+import { Product } from './../shared/models/product';
 import { AdminModule } from './../admin/admin.module';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
@@ -11,29 +12,31 @@ import { ShoppingFormComponent } from './shopping-form/shopping-form.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgSelectModule } from '@ng-select/ng-select';
 import { CartCheckoutComponent } from './cart-checkout/cart-checkout.component';
-
+import { ProductFilterComponent } from './products/product-filter/product-filter.component';
 
 @NgModule({
   declarations: [
     ShoppingCartComponent,
     ShoppingFormComponent,
-    CartCheckoutComponent
+    CartCheckoutComponent,
+    ProductsComponent,
+    ProductFilterComponent,
   ],
   imports: [
     AdminModule,
     CommonModule,
     SharedModule,
-    RouterModule.forChild([
-      { path: 'shopping-cart', component: ShoppingCartComponent },
     NgSelectModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    RouterModule.forChild([
+      { path: 'shopping-cart', component: ShoppingCartComponent },
     ]),
   ],
-  providers:[
+  providers: [
     ShoppingCartService,
     ProductQuantityComponent,
-    ShoppingFormComponent
-  ]
+    ShoppingFormComponent,
+  ],
 })
 export class ShoppingModule {}

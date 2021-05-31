@@ -1,16 +1,17 @@
-<p>In add products</p>
-<div class="row">
+<div class="container">
+    <br>
     <div class="col-md-6">
-        <form #f="ngForm" (ngSubmit)="addProduct(f.value)">
+        <form class="form-horizontal shadow p-3 mb-5 bg-white rounded" #f="ngForm" (ngSubmit)="addProduct(f.value)">
+            <h4>Add Product</h4>
             <div class="form-group">
-                <label for="title">Product Title</label>
+                <label for="title">Product Title :</label>
                 <input #title="ngModel" [(ngModel)]="product.title" name="title" id="title" type="text" class="form-control" required>
             </div>
             <div class="alert alert-danger" *ngIf="title.touched && title.invalid">
                 Title is required.
             </div>
             <div class="form-group">
-                <label for="price">Price</label>
+                <label for="price">Price :</label>
                 <div class="input-group">
                     <span class="input-group-addon">Rs.</span>
                     <input #price="ngModel" [(ngModel)]="product.price" name="price" id="price" type="number" class="form-control" required [min]="0">
@@ -21,7 +22,7 @@
                 </div>
             </div>
             <div class="form-group">
-                <label for="category">Category</label>
+                <label for="category">Category :</label>
                 <select #category="ngModel" [(ngModel)]="product.category" name="category" id="category" class="form-control" required>
                     <option value=""></option>
                     <option *ngFor="let c of categories">

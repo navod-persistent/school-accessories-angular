@@ -3,6 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Product } from 'src/app/shared/models/product';
 import { CategoryService } from 'src/app/shared/services/category.service';
 import { ProductDataService } from 'src/app/shared/services/product-data.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-add-product-form',
@@ -36,13 +37,27 @@ export class AddProductFormComponent implements OnInit {
     this.product.$key = (
       this.productDataService.getAll().length + 1
     ).toString();
-    this.product.title = product.name;
+    this.product.title = product.title;
     this.product.price = product.price;
     this.product.category = product.category;
     this.product.imageUrl = this.imageUrl;
     console.log(this.product);
-    this.productDataService.addProduct(this.product);
-    this.router.navigate(['products']);
+
+    Swal.fire({
+      title: 'Are you sure you want to add the product?',
+      showCancelButton: true,
+      confirmButtonText: 'Yes',
+      cancelButtonText: 'Cancel',
+    }).then((result) => {
+      if (result.value) {
+        this.productDataService.addProduct(this.product);
+        Swal.fire('Product Added Successfully!', 'success');
+        this.router.navigate(['products']);
+      } else if (result.dismiss === Swal.DismissReason.cancel) {
+        Swal.fire('Cancelled', 'The New Product was Cancelled', 'error');
+        this.router.navigate(['products']);
+      }
+    });
   }
 
   handleFileInput(event: Event) {

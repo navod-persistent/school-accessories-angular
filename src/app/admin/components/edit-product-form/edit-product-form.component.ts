@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CategoryService } from 'src/app/shared/services/category.service';
 import { ProductDataService } from 'src/app/shared/services/product-data.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-edit-product-form',
@@ -49,7 +50,24 @@ export class EditProductFormComponent implements OnInit {
     if (this.imageUrl != '/assets/imgs/noimage.png') {
       this.product.imageUrl = this.imageUrl;
     }
-    this.productDataService.update(this.id, this.product);
-    this.router.navigate(['products']);
+    Swal.fire({
+      title: 'Are you sure you want to edit the product?',
+      showCancelButton: true,
+      confirmButtonText: 'Yes',
+      cancelButtonText: 'Cancel',
+    }).then((result) => {
+      if (result.value) {
+        this.productDataService.update(this.id, this.product);
+        Swal.fire('Product Details Updated Successfully!', 'success');
+        this.router.navigate(['products']);
+      } else if (result.dismiss === Swal.DismissReason.cancel) {
+        Swal.fire(
+          'Cancelled',
+          'The Product Details Update was Cancelled',
+          'error'
+        );
+        this.router.navigate(['products']);
+      }
+    });
   }
 }
