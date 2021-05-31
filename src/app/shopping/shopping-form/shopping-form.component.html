@@ -14,19 +14,23 @@
           <form class="forms-sample" [formGroup] = "shoppingForm">
             <div class="form-group">
               <label for="exampleInputUsername1">Name</label>
-              <input type="text" class="form-control" id="username" placeholder="Username" name="username" formControlName="userName" required>
+              <input type="text" class="form-control" id="username" placeholder="Username" name="username" formControlName="userName" ngModel required >
+              <small class="text-danger" *ngIf="shoppingForm.get('userName')?.invalid && shoppingForm.get('userName')?.touched">Name is required</small>
             </div>
             <div class="form-group">
               <label for="exampleInputEmail1">Email address</label>
               <input type="email" class="form-control" id="email" placeholder="Email" formControlName="email">
+              <small class="text-danger" *ngIf="shoppingForm.get('email')?.invalid && shoppingForm.get('email')?.touched">Enter correct email</small>
             </div>
             <div class="form-group">
               <label for="exampleInputPassword1">Mobile No</label>
-              <input type="text" class="form-control" id="mobileno" placeholder="Mobile No (0714568952)" formControlName="mobileNo">
+              <input type="text" class="form-control" id="mobileno" placeholder="Mobile No (0714568952)" formControlName="mobileNo" ngModel required>
+              <small class="text-danger" *ngIf="shoppingForm.get('mobileNo')?.invalid && shoppingForm.get('mobileNo')?.touched">Enter valid mobile no</small>
             </div>
             <div class="form-group">
               <label for="exampleInputConfirmPassword1">Address</label>
-              <input type="text" class="form-control" id="address" placeholder="Deliery Address" formControlName="address">
+              <input type="text" class="form-control" id="address" placeholder="Deliery Address" formControlName="address" ngModel required>
+              <small class="text-danger" *ngIf="shoppingForm.get('address')?.invalid && shoppingForm.get('address')?.touched">Address is required</small>
             </div>
             <p></p>
 
@@ -57,12 +61,14 @@
             
             <div class="form-group">
               <label for="exampleInputUsername1">Card No</label>
-              <input type="text" class="form-control" id="cardno" placeholder="Card No (16 digits)" formControlName="cardNo">
+              <input type="number" class="form-control" id="cardno" placeholder="Card No (16 digits)" formControlName="cardNo" ngModel required>
+              <small class="text-danger" *ngIf="shoppingForm.get('cardNo')?.invalid && shoppingForm.get('cardNo')?.touched">Enter a valid card no</small>
             </div>
 
             <div class="form-group">
               <label for="exampleInputUsername1">CVC</label>
-              <input type="text" class="form-control" id="cvc" placeholder="CVC (3 digits)" formControlName="cvc">
+              <input type="number" class="form-control" id="cvc" placeholder="CVC (3 digits)" formControlName="cvc" ngModel required>
+              <small class="text-danger" *ngIf="shoppingForm.get('cvc')?.invalid && shoppingForm.get('cvc')?.touched">Enter a valid cv</small>
             </div>
 
             <div class="form-group">
@@ -70,21 +76,24 @@
               <ng-select [items]="months" 
                 bindLabel="name" 
                 bindValue="id"
-                formControlName="monthExpire">
+                formControlName="monthExpire" ngModel required>
               </ng-select>
+              <small class="text-danger" *ngIf="shoppingForm.get('monthExpire')?.invalid && shoppingForm.get('monthExpire')?.touched">Select the month</small>
             </div>
             <div class="form-group">
               <label for="exampleInputUsername1">Expiration Year</label>
               <ng-select [items]="years" 
                 bindLabel="name" 
-                bindValue="id" >
+                bindValue="id"
+                formControlName="yearExpire"  ngModel required>
               </ng-select>
+              <small class="text-danger" *ngIf="shoppingForm.get('yearExpire')?.invalid && shoppingForm.get('yearExpire')?.touched">Select the year</small>
             </div>
             <p></p>
             <div class="form-group">
-            <button type="submit" class="btn btn-primary col-md-2" (click) = "purchaseCart()">Submit</button>
+            <button type="submit" class="btn btn-primary col-md-2" (click) = "purchaseCart()" [disabled]="!shoppingForm.valid">Submit</button>
            
-            <button class="btn btn-light col-md-2">Cancel</button>
+            <button class="btn btn-light col-md-2" (click)="navigatebackToCart()">Cancel</button>
           </div>
           </form>
         </div>
