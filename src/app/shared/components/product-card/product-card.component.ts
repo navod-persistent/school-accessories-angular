@@ -41,7 +41,6 @@ export class ProductCardComponent implements OnInit {
       }
     });
   }
-
   editproduct(pid: string) {
     this.router.navigate(['admin/edit-product/' + pid]);
   }

@@ -32,12 +32,8 @@ import { ProductQuantityComponent } from '../shared/product-quantity/product-qua
     AdminModule,
     CommonModule,
     SharedModule,
-    NgSelectModule,
-    FormsModule,
-    ReactiveFormsModule,
     RouterModule.forChild([
       { path: 'shopping-cart', component: ShoppingCartComponent },
-      { path: 'products', component: ProductsComponent },
     ]),
   ],
   providers: [
