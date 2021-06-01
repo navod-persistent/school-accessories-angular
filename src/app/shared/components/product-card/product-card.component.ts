@@ -32,7 +32,7 @@ export class ProductCardComponent implements OnInit {
       cancelButtonText: 'Cancel',
     }).then((result) => {
       if (result.value) {
-        this.prodcutDataService.delete(pid);
+        this.prodcutDataService.delete(pid).subscribe();
         Swal.fire('Product Deletion Successfully!', 'success');
         this.router.navigate(['products']);
       } else if (result.dismiss === Swal.DismissReason.cancel) {
@@ -41,7 +41,6 @@ export class ProductCardComponent implements OnInit {
       }
     });
   }
-
   editproduct(pid: string) {
     this.router.navigate(['admin/edit-product/' + pid]);
   }

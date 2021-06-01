@@ -33,17 +33,13 @@ import { ProductQuantityComponent } from '../shared/product-quantity/product-qua
     CommonModule,
     SharedModule,
     RouterModule.forChild([
-             { path: 'shopping-cart', component: ShoppingCartComponent },
-       ]),
+      { path: 'shopping-cart', component: ShoppingCartComponent },
+    ]),
   ],
-  exports: [
-    ProductsComponent,
-    ShoppingCartComponent,
-    CartCheckoutComponent,
+  providers: [
+    ShoppingCartService,
+    ProductQuantityComponent,
     ShoppingFormComponent,
   ],
-  providers: [ShoppingCartService,
-         ProductQuantityComponent,
-        ShoppingFormComponent,],
 })
 export class ShoppingModule {}

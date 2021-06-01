@@ -5,13 +5,13 @@ import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ShoppingModule } from './shopping/shopping.module';
-import { EditProductFormComponent } from './admin/components/edit-product-form/edit-product-form.component';
-import { AddProductFormComponent } from './admin/components/add-product-form/add-product-form.component';
 import { ProductsComponent } from './shopping/products/products.component';
 import { NgSelectModule } from '@ng-select/ng-select';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CoreModule } from './core/core.module';
 import { LoginComponent } from './core/components/login/login.component';
+import { EditProductFormComponent } from './admin/components/edit-product-form/edit-product-form.component';
+import { AddProductFormComponent } from './admin/components/add-product-form/add-product-form.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +33,7 @@ import { LoginComponent } from './core/components/login/login.component';
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
-    CoreModule
+    CoreModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

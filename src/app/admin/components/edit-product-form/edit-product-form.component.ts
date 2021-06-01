@@ -25,10 +25,8 @@ export class EditProductFormComponent implements OnInit {
   ) {
     this.categories$ = this.categoryService.getAll();
     this.id = this.route.snapshot.paramMap.get('id');
-    // if (this.id) this.productService.get(this.id).take(1).subscribe(p => this.product = p);
-    if (this.id) {
-      this.product = this.productDataService.get(this.id);
-    }
+    if (this.id)
+      this.productDataService.get(this.id).subscribe((p) => (this.product = p));
   }
 
   ngOnInit(): void {}
@@ -57,7 +55,7 @@ export class EditProductFormComponent implements OnInit {
       cancelButtonText: 'Cancel',
     }).then((result) => {
       if (result.value) {
-        this.productDataService.update(this.id, this.product);
+        this.productDataService.update(this.product).subscribe();
         Swal.fire('Product Details Updated Successfully!', 'success');
         this.router.navigate(['products']);
       } else if (result.dismiss === Swal.DismissReason.cancel) {
