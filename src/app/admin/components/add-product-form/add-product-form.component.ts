@@ -34,9 +34,9 @@ export class AddProductFormComponent implements OnInit {
   ngOnInit(): void {}
 
   addProduct(product: any) {
-    this.product.$key = (
-      this.productDataService.getAll().length + 1
-    ).toString();
+    // this.product.$key = (
+    //   this.productDataService.getAll().length + 1
+    // ).toString();
     this.product.title = product.title;
     this.product.price = product.price;
     this.product.category = product.category;
@@ -50,7 +50,11 @@ export class AddProductFormComponent implements OnInit {
       cancelButtonText: 'Cancel',
     }).then((result) => {
       if (result.value) {
-        this.productDataService.addProduct(this.product);
+        this.productDataService
+          .addProduct(this.product)
+          .subscribe((response) => {
+            //acknowledgement
+          });
         Swal.fire('Product Added Successfully!', 'success');
         this.router.navigate(['products']);
       } else if (result.dismiss === Swal.DismissReason.cancel) {

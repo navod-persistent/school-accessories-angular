@@ -6,8 +6,8 @@
             <div class="col-6">
                 <div class="form-group">
                     <label for="category">Product Title :</label>
-                    <input #name="ngModel" type="text" class="form-control" placeholder="Product Title" ngModel name="name" [(ngModel)]="product.title" required>
-                    <div class="alert alert-danger" *ngIf="name.touched && name.invalid">
+                    <input #title="ngModel" type="text" class="form-control" placeholder="Product Title" ngModel name="title" [(ngModel)]="product.title" required>
+                    <div class="alert alert-danger" *ngIf="title.touched && title.invalid">
                         Title is required.
                     </div>
                 </div>

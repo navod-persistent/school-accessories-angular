@@ -1,4 +1,3 @@
-import { ProductsComponent } from './../shopping/products/products.component';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
@@ -12,7 +11,6 @@ import { EditProductFormComponent } from './components/edit-product-form/edit-pr
     CommonModule,
     FormsModule,
     RouterModule.forChild([
-      { path: 'products', component: ProductsComponent },
       { path: 'admin/add-product', component: AddProductFormComponent },
       { path: 'admin/edit-product/:id', component: EditProductFormComponent },
     ]),
