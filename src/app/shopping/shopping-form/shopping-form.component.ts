@@ -1,5 +1,6 @@
 import { Component, OnInit, OnDestroy, Input } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import Swal from 'sweetalert2';
 
 @Component({
@@ -43,25 +44,42 @@ export class ShoppingFormComponent implements OnInit {
   checkboxes = [{ checked: false, value: 'Visa Card' }, { checked: false, value: 'Master Card' }];
   
 
-  constructor() { }
+  constructor(private router: Router) { }
 
   ngOnInit(): void {
     this.shoppingForm = new FormGroup({
-      'userName': new FormControl(),
-      'email': new FormControl(),
-      'mobileNo': new FormControl(),
-      'address': new FormControl(),
-      'cardNo': new FormControl(),
-      'cvc': new FormControl(),
-      'monthExpire': new FormControl(),
+      'userName': new FormControl(null, Validators.required),
+      'email': new FormControl(null, Validators.email),
+      'mobileNo': new FormControl(
+        null,
+        [
+          Validators.required,
+          Validators.pattern('^((\\+91-?)|0)?[0-9]{10}$')
+        ]),
+      'address': new FormControl(null, Validators.required),
+      'cardNo': new FormControl(
+        null,
+        [
+          Validators.required,
+          Validators.pattern('^[0-9]{16}$')
+        ]),
+      'cvc': new FormControl(
+        null,
+        [
+          Validators.required,
+          Validators.pattern('^[0-9]{3}$')
+        ]
+      ),
+      'monthExpire': new FormControl(null, Validators.required),
+      'yearExpire': new FormControl(null, Validators.required),
       'cardType': new FormControl()
     })
   }
-  
+
   purchaseCart() {
     console.log(this.shoppingForm.value);
     Swal.fire({
-      title: "Are you sure you want to place the offer",
+      title: "Are you sure you want to place the offer?",
       showCancelButton: true,
       confirmButtonText: "OK",
       cancelButtonText: "Cancel"
@@ -71,6 +89,7 @@ export class ShoppingFormComponent implements OnInit {
           "Order Placed Successfully!",
           "success"
         );
+        this.navigateToHome();
       } else if (result.dismiss === Swal.DismissReason.cancel) {
         Swal.fire(
           "Cancelled",
@@ -89,4 +108,11 @@ export class ShoppingFormComponent implements OnInit {
     })
   }
 
+  navigateToHome() {
+    this.router.navigate(['products']);
+  }
+
+  navigatebackToCart() {
+    this.router.navigate(['cart-checkout']);
+  }
 }

@@ -13,6 +13,7 @@ import { NgSelectModule } from '@ng-select/ng-select';
 import { CartCheckoutComponent } from './cart-checkout/cart-checkout.component';
 import { ProductFilterComponent } from './products/product-filter/product-filter.component';
 import { CoreModule } from '../core/core.module';
+import { ProductQuantityComponent } from '../shared/product-quantity/product-quantity.component';
 
 @NgModule({
   declarations: [
@@ -31,20 +32,9 @@ import { CoreModule } from '../core/core.module';
     AdminModule,
     CommonModule,
     SharedModule,
-    // <<<<<<< HEAD
-    //     NgSelectModule,
-    //     FormsModule,
-    //     ReactiveFormsModule,
-    //     RouterModule.forChild([
-    //       { path: 'shopping-cart', component: ShoppingCartComponent },
-    //     ]),
-    //   ],
-    //   providers: [
-    //     ShoppingCartService,
-    //     ProductQuantityComponent,
-    //     ShoppingFormComponent,
-    //   ],
-    // =======
+    RouterModule.forChild([
+             { path: 'shopping-cart', component: ShoppingCartComponent },
+       ]),
   ],
   exports: [
     ProductsComponent,
@@ -52,7 +42,8 @@ import { CoreModule } from '../core/core.module';
     CartCheckoutComponent,
     ShoppingFormComponent,
   ],
-  providers: [ShoppingCartService],
-  // >>>>>>> origin/master
+  providers: [ShoppingCartService,
+         ProductQuantityComponent,
+        ShoppingFormComponent,],
 })
 export class ShoppingModule {}
