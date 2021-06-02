@@ -11,7 +11,7 @@
 
         <div class="button-container">
             <button *ngIf="isAdmin" class="btn btn-primary btn-sm product-btn" (click)="editproduct(product.$key)">Edit</button>
-            <button *ngIf="isAdmin" class="btn btn-danger btn-sm product-btn" (click)="delete(product.$key)">Delete</button>
+            <button *ngIf="isAdmin" class="btn btn-danger btn-sm product-btn" (click)="deleteProduct(product.$key)">Delete</button>
         </div>
     </div>
 </div>

@@ -21,12 +21,6 @@ export class ProductsComponent implements OnInit {
 
   ngOnInit(): void {
     this.populateProducts();
-    // this.productDataService.testConnection().subscribe(
-    //   (users) => {
-    //     this.userList = users;
-    //   },
-    //   (error) => console.log('Error in fetching the data')
-    // );
   }
 
   private populateProducts() {
@@ -35,13 +29,14 @@ export class ProductsComponent implements OnInit {
       .pipe(
         switchMap((products) => {
           this.products = products;
+          console.log('in populate');
           console.log(this.products);
           return this.route.queryParamMap;
         })
       )
       .subscribe((params) => {
         this.category = params.get('category');
-        console.log(this.category);
+        console.log('selected category : ' + this.category);
         this.applyFilter();
       });
   }
@@ -50,6 +45,12 @@ export class ProductsComponent implements OnInit {
     this.filteredProducts = this.category
       ? this.products.filter((p) => p.category === this.category)
       : this.products;
-    console.log(this.filteredProducts);
+  }
+
+  deleteProduct(pid: string) {
+    console.log('delete ----> ' + pid);
+    this.productDataService
+      .delete(pid)
+      .subscribe((response) => this.populateProducts());
   }
 }

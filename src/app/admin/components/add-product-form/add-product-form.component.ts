@@ -41,7 +41,7 @@ export class AddProductFormComponent implements OnInit {
     this.product.price = product.price;
     this.product.category = product.category;
     this.product.imageUrl = this.imageUrl;
-    console.log(this.product);
+    // console.log(this.product);
 
     Swal.fire({
       title: 'Are you sure you want to add the product?',

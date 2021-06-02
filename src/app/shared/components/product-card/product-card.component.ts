@@ -1,5 +1,5 @@
 import { ProductDataService } from './../../services/product-data.service';
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, Output, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Product } from '../../models/product';
 import Swal from 'sweetalert2';
@@ -15,6 +15,9 @@ export class ProductCardComponent implements OnInit {
 
   isAdmin: boolean = true;
 
+  @Output()
+  delete = new EventEmitter<string>();
+
   constructor(
     private router: Router,
     private prodcutDataService: ProductDataService // private authService: AuthService
@@ -24,7 +27,7 @@ export class ProductCardComponent implements OnInit {
     // isAdmin = authService.
   }
 
-  delete(pid: string) {
+  deleteProduct(pid: string) {
     Swal.fire({
       title: 'Are you sure you want to delete the product?',
       showCancelButton: true,
@@ -32,12 +35,10 @@ export class ProductCardComponent implements OnInit {
       cancelButtonText: 'Cancel',
     }).then((result) => {
       if (result.value) {
-        this.prodcutDataService.delete(pid).subscribe();
+        this.delete.emit(pid);
         Swal.fire('Product Deletion Successfully!', 'success');
-        this.router.navigate(['products']);
       } else if (result.dismiss === Swal.DismissReason.cancel) {
         Swal.fire('Cancelled', 'The Product Deletion was Cancelled', 'error');
-        this.router.navigate(['products']);
       }
     });
   }
