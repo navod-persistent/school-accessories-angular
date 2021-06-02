@@ -16,7 +16,7 @@ export class ProductCardComponent implements OnInit {
   isAdmin: boolean = true;
 
   @Output()
-  delete = new EventEmitter<string>();
+  delete = new EventEmitter<number>();
 
   constructor(
     private router: Router,
@@ -27,7 +27,7 @@ export class ProductCardComponent implements OnInit {
     // isAdmin = authService.
   }
 
-  deleteProduct(pid: string) {
+  deleteProduct(pid: number) {
     Swal.fire({
       title: 'Are you sure you want to delete the product?',
       showCancelButton: true,
@@ -42,11 +42,11 @@ export class ProductCardComponent implements OnInit {
       }
     });
   }
-  editproduct(pid: string) {
+  editproduct(pid: number) {
     this.router.navigate(['admin/edit-product/' + pid]);
   }
 
-  addToCart(pid: string) {
+  addToCart(pid: number) {
     this.router.navigate(['shopping-cart']);
   }
 }

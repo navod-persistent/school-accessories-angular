@@ -10,7 +10,7 @@ import Swal from 'sweetalert2';
   styleUrls: ['./edit-product-form.component.css'],
 })
 export class EditProductFormComponent implements OnInit {
-  categories$:any;
+  categories: any;
   product: any;
   id: any;
 
@@ -22,12 +22,12 @@ export class EditProductFormComponent implements OnInit {
     private route: ActivatedRoute,
     private categoryService: CategoryService,
     private productDataService: ProductDataService
-  ) {
-    
-  }
+  ) {}
 
   ngOnInit(): void {
-    this.categories$ = this.categoryService.getAll();
+    this.categoryService.getAll().subscribe((categories) => {
+      this.categories = categories;
+    });
     this.id = this.route.snapshot.paramMap.get('id');
     if (this.id)
       this.productDataService.get(this.id).subscribe((p) => (this.product = p));
@@ -57,9 +57,10 @@ export class EditProductFormComponent implements OnInit {
       cancelButtonText: 'Cancel',
     }).then((result) => {
       if (result.value) {
-        this.productDataService.update(this.product).subscribe();
+        this.productDataService
+          .update(this.product)
+          .subscribe((response) => this.router.navigate(['products']));
         Swal.fire('Product Details Updated Successfully!', 'success');
-        this.router.navigate(['products']);
       } else if (result.dismiss === Swal.DismissReason.cancel) {
         Swal.fire(
           'Cancelled',

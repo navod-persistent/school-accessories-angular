@@ -11,33 +11,33 @@ export class ProductDataService {
 
   getAll(): Observable<any> {
     console.log('get-all');
-    return this.http.get<any>('http://localhost:8080/admin/get-products');
+    return this.http.get<any>('http://localhost:8081/admin/get-products');
   }
 
   addProduct(newProduct: Product): Observable<any> {
     return this.http.post(
-      'http://localhost:8080/admin/add-product',
+      'http://localhost:8081/admin/add-product',
       newProduct
     );
   }
 
   update(newProduct: Product) {
     return this.http.put(
-      'http://localhost:8080/admin/update-product',
+      'http://localhost:8081/admin/update-product',
       newProduct
     );
   }
 
-  delete(pid: string): Observable<any> {
-    console.log('http://localhost:8080/admin/delete-product/' + pid);
+  delete(pid: number): Observable<any> {
+    // console.log('http://localhost:8081/admin/delete-product/' + pid);
     return this.http.delete<any>(
-      'http://localhost:8080/admin/delete-product/' + pid
+      'http://localhost:8081/admin/delete-product/' + pid
     );
   }
 
-  get(pid: string): Observable<Product> {
+  get(pid: number): Observable<Product> {
     return this.http.get<Product>(
-      'http://localhost:8080/admin/get-product/' + pid
+      'http://localhost:8081/admin/get-product/' + pid
     );
   }
 }
