@@ -16,7 +16,7 @@ export class AddProductFormComponent implements OnInit {
     product_id: 0,
     title: '',
     price: 0,
-    category_id: 0,
+    category: '',
     image: '',
     descript: '',
   };
@@ -37,12 +37,13 @@ export class AddProductFormComponent implements OnInit {
   }
 
   addProduct(product: any) {
+    console.log(product);
     this.product.title = product.title;
     this.product.price = product.price;
-    this.product.category_id = product.category;
+    this.product.category = product.category;
     this.product.descript = product.description;
-    this.product.image = this.imageUrl;
-
+    this.product.image = '/assets/imgs/' + this.fileToUpload?.name;
+    console.log('-------------' + this.product.image);
     Swal.fire({
       title: 'Are you sure you want to add the product?',
       showCancelButton: true,
@@ -57,8 +58,6 @@ export class AddProductFormComponent implements OnInit {
           });
         Swal.fire('Product Added Successfully!', 'success');
       } else if (result.dismiss === Swal.DismissReason.cancel) {
-        Swal.fire('Cancelled', 'The New Product was Cancelled', 'error');
-        this.router.navigate(['products']);
       }
     });
   }
@@ -68,6 +67,7 @@ export class AddProductFormComponent implements OnInit {
     let fileList: FileList | null = element.files;
     if (fileList) {
       this.fileToUpload = fileList.item(0);
+      console.log('file' + this.fileToUpload);
     }
     var reader = new FileReader();
     reader.onload = (event: any) => {

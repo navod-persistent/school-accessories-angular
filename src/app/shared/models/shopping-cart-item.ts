@@ -1,3 +1,4 @@
+import { Category } from './category';
 import { Product } from './product';
 
 export class ShoppingCartItem {
@@ -6,7 +7,7 @@ export class ShoppingCartItem {
   image: string;
   price: number;
   quantity: number;
-  category_id: number;
+  category: string;
   descript: string;
   constructor(
     key: number,
@@ -14,7 +15,7 @@ export class ShoppingCartItem {
     imageUrl: string,
     price: number,
     quantity: number,
-    category: number,
+    category: string,
     descript: string
   ) {
     this.product_id = key;
@@ -22,7 +23,7 @@ export class ShoppingCartItem {
     this.image = imageUrl;
     this.price = price;
     this.quantity = quantity;
-    this.category_id = category;
+    this.category = category;
     this.descript = descript;
   }
 

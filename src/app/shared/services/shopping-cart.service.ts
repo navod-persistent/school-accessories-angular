@@ -18,7 +18,7 @@ export class ShoppingCartService {
         'assets/imgs/pencil.jpg',
         56,
         2,
-        1,
+        'Pencil',
         ''
       )
     );
@@ -29,7 +29,7 @@ export class ShoppingCartService {
         'assets/imgs/book.jpg',
         140,
         4,
-        2,
+        'Book',
         'books'
       )
     );
@@ -40,7 +40,7 @@ export class ShoppingCartService {
         'assets/imgs/bag.jpg',
         1450,
         1,
-        3,
+        'Bag',
         'bag'
       )
     );
@@ -60,12 +60,12 @@ export class ShoppingCartService {
     }
     this.items.push(
       new ShoppingCartItem(
-        product.category_id,
+        product.product_id,
         product.title,
         product.image,
         product.price,
         1,
-        product.category_id,
+        product.category,
         product.descript
       )
     );
