@@ -98,14 +98,14 @@ export class ShoppingCartService {
     }
   }
   clearCart() {
-    if (confirm('Remove all items from Cart?')) {
-      while (this.items.length > 0) {
-        this.items.pop();
-      }
-      localStorage.removeItem('cart');
-    } else {
-      return;
+    // if (confirm('Remove all items from Cart?')) {
+    while (this.items.length > 0) {
+      this.items.pop();
     }
+    localStorage.removeItem('cart');
+    // } else {
+    //   return;
+    // }
   }
 
   populateFromLocalStorage() {
