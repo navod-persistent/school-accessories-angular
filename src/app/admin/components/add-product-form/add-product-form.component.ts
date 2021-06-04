@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { ModalDismissReasons, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Product } from 'src/app/shared/models/product';
 import { CategoryService } from 'src/app/shared/services/category.service';
 import { ProductDataService } from 'src/app/shared/services/product-data.service';
@@ -27,7 +28,8 @@ export class AddProductFormComponent implements OnInit {
     private router: Router,
     private route: ActivatedRoute,
     private categoryService: CategoryService,
-    private productDataService: ProductDataService
+    private productDataService: ProductDataService,
+    private modalService: NgbModal
   ) {}
 
   ngOnInit(): void {
@@ -78,5 +80,25 @@ export class AddProductFormComponent implements OnInit {
 
   navigatebackToProducts() {
     this.router.navigate(['products']);
+  }
+
+  addCategory() {
+    this.router.navigate(['products']);
+    // Swal.fire({
+    //   title: 'Submit your Github username',
+    //   input: 'text',
+    //   inputAttributes: {
+    //     autocapitalize: 'off',
+    //   },
+    //   showCancelButton: true,
+    //   confirmButtonText: 'Look up',
+    //   showLoaderOnConfirm: true,
+    //   preConfirm: (login) => {},
+    //   allowOutsideClick: () => !Swal.isLoading(),
+    // }).then((result) => {
+    //   if (result.isConfirmed) {
+    //     Swal.fire({});
+    //   }
+    // });
   }
 }
