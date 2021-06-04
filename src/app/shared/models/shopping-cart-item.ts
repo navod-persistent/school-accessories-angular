@@ -8,6 +8,7 @@ export class ShoppingCartItem {
   quantity: number;
   category_id: number;
   descript: string;
+
   constructor(
     key: number,
     title: string,
@@ -27,6 +28,6 @@ export class ShoppingCartItem {
   }
 
   get totalPrice() {
-    return this.price * this.quantity;
+    return this.quantity * this.price;
   }
 }

@@ -3,6 +3,7 @@ import { Component, EventEmitter, Input, Output, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Product } from '../../models/product';
 import Swal from 'sweetalert2';
+import {ShoppingCartService} from "../../services/shopping-cart.service";
 
 @Component({
   selector: 'app-product-card',
@@ -20,7 +21,8 @@ export class ProductCardComponent implements OnInit {
 
   constructor(
     private router: Router,
-    private prodcutDataService: ProductDataService // private authService: AuthService
+    private prodcutDataService: ProductDataService,// private authService: AuthService
+    private shoppingCartService: ShoppingCartService
   ) {}
 
   ngOnInit(): void {
@@ -47,6 +49,7 @@ export class ProductCardComponent implements OnInit {
   }
 
   addToCart(pid: number) {
+    this.shoppingCartService.addToCart(this.product);
     this.router.navigate(['shopping-cart']);
   }
 }
