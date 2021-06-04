@@ -1,6 +1,3 @@
-import { Category } from './category';
-import { Product } from './product';
-
 export class ShoppingCartItem {
   product_id: number;
   title: string;
