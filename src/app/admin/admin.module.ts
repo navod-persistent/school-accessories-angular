@@ -7,7 +7,7 @@ import { EditProductFormComponent } from './components/edit-product-form/edit-pr
 import { AddCategoryComponent } from './components/add-category/add-category.component';
 
 @NgModule({
-  declarations: [AddCategoryComponent],
+  declarations: [],
   imports: [
     CommonModule,
     FormsModule,
